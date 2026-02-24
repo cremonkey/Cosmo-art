@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS (compiled) -->
-    <link rel="stylesheet" href="./dist/css/style.css">
+    <link rel="stylesheet" href="./dist/css/style.css?v=2">
 </head>
 <body class="bg-sage text-forest font-sans antialiased overflow-x-hidden min-h-screen flex flex-col transition-opacity duration-1000 opacity-0" id="body-content">
     
@@ -37,8 +37,8 @@
                 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button type="button" class="text-cream hover:text-medical p-2 min-w-[44px] min-h-[44px]" aria-expanded="false" aria-label="Toggle navigation">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <button id="mobile-menu-btn" type="button" class="text-cream hover:text-medical p-2 min-w-[44px] min-h-[44px] transition-colors relative z-[60]" aria-expanded="false" aria-label="Toggle navigation">
+                        <svg id="menu-icon" class="h-6 w-6 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
@@ -46,6 +46,16 @@
             </div>
         </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[55] bg-forest/95 backdrop-blur-lg flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-500">
+        <nav class="flex flex-col items-center space-y-8 text-center translate-y-8 transition-transform duration-500" id="mobile-nav-links">
+            <a href="index.html" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Home</a>
+            <a href="about.html" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Science & Philosophy</a>
+            <a href="products.html" class="mobile-link text-medical text-2xl font-serif tracking-widest border-b border-medical pb-2">Therapies</a>
+            <a href="index.html#location" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Location</a>
+        </nav>
+    </div>
 
     <!-- Main Content Area -->
     <main class="flex-grow pt-32 pb-24">
@@ -59,7 +69,7 @@
 
         <!-- Product Grid (Informational Only) -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
                 
                 <!-- Product Card 1 -->
                 <article class="reveal-on-scroll bg-beige rounded-2xl overflow-hidden shadow-sm hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(229,138,74,0.15)] border border-transparent hover:border-medical/40 transition-all duration-500 group flex flex-col" style="transition-delay: 0.2s;">

@@ -50,4 +50,52 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('py-2', 'shadow-md');
         }
     }, { passive: true });
+
+    // 4. Mobile Menu Logic
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const mobileNavLinks = document.getElementById('mobile-nav-links');
+    let isMenuOpen = false;
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            mobileMenuBtn.setAttribute('aria-expanded', isMenuOpen.toString());
+            
+            if (isMenuOpen) {
+                // Open menu
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+                mobileNavLinks.classList.remove('translate-y-8');
+                mobileNavLinks.classList.add('translate-y-0');
+                document.body.classList.add('overflow-hidden'); // Prevent scrolling
+                // Change icon to close (X)
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />';
+                // Rotate the icon for flourish effect
+                menuIcon.classList.add('rotate-90');
+            } else {
+                // Close menu
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileNavLinks.classList.remove('translate-y-0');
+                mobileNavLinks.classList.add('translate-y-8');
+                document.body.classList.remove('overflow-hidden'); // Allow scrolling
+                // Change icon back to hamburger
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />';
+                // Remove rotation
+                menuIcon.classList.remove('rotate-90');
+            }
+        });
+
+        // Close menu when a link is clicked
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) {
+                    mobileMenuBtn.click();
+                }
+            });
+        });
+    }
 });

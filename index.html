@@ -20,7 +20,7 @@
     />
 
     <!-- Tailwind CSS (compiled) -->
-    <link rel="stylesheet" href="./dist/css/style.css" />
+    <link rel="stylesheet" href="./dist/css/style.css?v=2" />
   </head>
   <body
     class="bg-sage text-forest font-sans antialiased overflow-x-hidden min-h-screen flex flex-col transition-opacity duration-1000 opacity-0 relative"
@@ -200,7 +200,7 @@
                     <h2 class="reveal-on-scroll font-serif text-4xl md:text-5xl text-cream tracking-wide mb-6" style="transition-delay: 0.3s;">Featured Therapies</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
                     <!-- Product Card 1 -->
                     <article class="reveal-on-scroll bg-beige rounded-2xl overflow-hidden shadow-sm hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(229,138,74,0.15)] border border-transparent hover:border-medical/40 transition-all duration-500 group flex flex-col" style="transition-delay: 0.2s;">
                         <a href="product-detail.html" class="block flex-grow flex flex-col inset-0">
@@ -404,54 +404,5 @@
 
     <!-- Global Animations & Interaction -->
     <script src="./src/js/animations.js"></script>
-    <script>
-        // Mobile Menu Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            const mobileNavLinks = document.getElementById('mobile-nav-links');
-            let isMenuOpen = false;
-
-            mobileMenuBtn.addEventListener('click', () => {
-                isMenuOpen = !isMenuOpen;
-                mobileMenuBtn.setAttribute('aria-expanded', isMenuOpen);
-                
-                if (isMenuOpen) {
-                    // Open menu
-                    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-                    mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
-                    mobileNavLinks.classList.remove('translate-y-8');
-                    mobileNavLinks.classList.add('translate-y-0');
-                    document.body.classList.add('overflow-hidden'); // Prevent scrolling
-                    // Change icon to close (X)
-                    menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />';
-                    // Rotate the icon for flourish effect
-                    menuIcon.classList.add('rotate-90');
-                } else {
-                    // Close menu
-                    mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
-                    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-                    mobileNavLinks.classList.remove('translate-y-0');
-                    mobileNavLinks.classList.add('translate-y-8');
-                    document.body.classList.remove('overflow-hidden'); // Allow scrolling
-                    // Change icon back to hamburger
-                    menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />';
-                    // Remove rotation
-                    menuIcon.classList.remove('rotate-90');
-                }
-            });
-
-            // Close menu when a link is clicked
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (isMenuOpen) {
-                        mobileMenuBtn.click();
-                    }
-                });
-            });
-        });
-    </script>
   </body>
 </html>
