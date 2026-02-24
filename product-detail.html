@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAD+ Core IV | Cosmo Fine Art</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover the NAD+ Core IV therapy at Cosmo Fine Art.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (compiled) -->
+    <link rel="stylesheet" href="./dist/css/style.css">
+    
+    <style>
+        /* Tab specific transitions */
+        .tab-content { display: none; opacity: 0; transition: opacity 0.5s ease-out; }
+        .tab-content.active { display: block; opacity: 1; }
+        .tab-btn.active { color: #E58A4A; border-bottom-color: #E58A4A; }
+    </style>
+</head>
+<body class="bg-sage text-forest font-sans antialiased overflow-x-hidden min-h-screen flex flex-col transition-opacity duration-1000 opacity-0 relative" id="body-content">
+    
+    <!-- Subtle Background Elements -->
+    <div class="fixed inset-0 z-0 pointer-events-none opacity-40 mix-blend-multiply">
+        <div class="absolute top-0 right-0 w-[50vw] h-[50vw] bg-cream/30 rounded-full blur-[120px]"></div>
+    </div>
+
+    <!-- Navigation Area -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-sage/90 backdrop-blur-md border-b border-cream/10" id="main-nav">
+        <!-- Exact same navigation as products.html -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="font-serif text-2xl tracking-widest text-cream">COSMO<span class="text-beige/70 text-sm ml-2 font-sans tracking-widest">FINE ART</span></a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-cream/80 hover:text-medical transition-colors text-sm uppercase tracking-wider">Home</a>
+                    <a href="about.html" class="text-cream/80 hover:text-medical transition-colors text-sm uppercase tracking-wider">Science & Philosophy</a>
+                    <a href="products.html" class="text-medical transition-colors text-sm uppercase tracking-wider border-b border-medical pb-1">Therapies</a>
+                    <a href="index.html#location" class="text-cream/80 hover:text-medical transition-colors text-sm uppercase tracking-wider">Location</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow pt-32 pb-24 relative z-10">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Breadcrumbs -->
+            <div class="reveal-on-scroll mb-8" style="transition-delay: 0.1s;">
+                 <a href="products.html" class="text-xs font-sans uppercase tracking-widest text-forest/60 hover:text-medical transition-colors flex items-center">
+                     <svg class="w-3 h-3 mr-2 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                     Back to Therapies
+                 </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                
+                <!-- Hero Product Image (Parallax) -->
+                <div class="reveal-on-scroll relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-cream/40 flex items-center justify-center border border-cream/20 shadow-sm" style="transition-delay: 0.2s;">
+                    <!-- Floating abstract representation of the therapy -->
+                    <svg class="w-1/2 h-1/2 text-sage/50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-[pulse_4s_infinite_ease-in-out]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.3">
+                         <circle cx="12" cy="12" r="10" />
+                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3" />
+                    </svg>
+                </div>
+
+                <!-- Product Information (NO Ecommerce) -->
+                <div class="reveal-on-scroll flex flex-col" style="transition-delay: 0.4s;">
+                    
+                    <h1 class="font-serif text-4xl md:text-5xl text-forest tracking-wide mb-4">NAD+ Core IV</h1>
+                    <p class="font-sans text-forest/70 text-lg font-light leading-relaxed mb-8">Our foundational intracellular repair therapy designed to optimize mitochondrial function and boost cellular energy. This infusion delivers Nicotinamide Adenine Dinucleotide directly into the bloodstream for maximum bioavailability.</p>
+                    
+                    <div class="bg-beige/50 border border-olive/20 rounded-xl p-6 mb-12">
+                         <h3 class="font-sans text-xs uppercase tracking-widest text-forest/60 mb-2">Clinical Focus</h3>
+                         <p class="font-serif text-forest text-xl">Cellular Energy & Cognitive Clarity</p>
+                    </div>
+
+                    <!-- Clean Tab System -->
+                    <div class="w-full">
+                        <!-- Tab Headers -->
+                        <div class="flex space-x-8 border-b border-olive/20 mb-8 overflow-x-auto pb-[1px]" role="tablist">
+                            <button class="tab-btn active pb-4 text-sm font-sans uppercase tracking-[0.15em] transition-colors border-b border-transparent hover:text-medical whitespace-nowrap" data-target="tab-benefits" role="tab">Benefits</button>
+                            <button class="tab-btn pb-4 text-sm font-sans uppercase tracking-[0.15em] transition-colors border-b border-transparent hover:text-medical whitespace-nowrap text-forest/60" data-target="tab-ingredients" role="tab">Composition</button>
+                            <button class="tab-btn pb-4 text-sm font-sans uppercase tracking-[0.15em] transition-colors border-b border-transparent hover:text-medical whitespace-nowrap text-forest/60" data-target="tab-protocol" role="tab">Protocol</button>
+                        </div>
+
+                        <!-- Tab Content -->
+                        <div class="relative min-h-[200px]">
+                            
+                            <!-- Benefits -->
+                            <div id="tab-benefits" class="tab-content active" role="tabpanel">
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-medical mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+                                        <span class="font-sans font-light text-forest/80 leading-relaxed">Significantly enhances cellular ATP production, combating chronic fatigue.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-medical mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+                                        <span class="font-sans font-light text-forest/80 leading-relaxed">Supports DNA repair mechanisms at the epigenetic level.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-medical mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+                                        <span class="font-sans font-light text-forest/80 leading-relaxed">Clears brain fog and promotes sharp, sustained cognitive function.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Composition -->
+                            <div id="tab-ingredients" class="tab-content" role="tabpanel">
+                                <p class="font-sans font-light text-forest/80 leading-relaxed mb-4">A precisely formulated compound ensuring stability and patient comfort during infusion.</p>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="bg-white/40 p-4 rounded-lg border border-cream/50">
+                                        <span class="block font-serif text-forest mb-1">NAD+</span>
+                                        <span class="text-xs font-sans text-forest/60 uppercase tracking-wider">500mg Base</span>
+                                    </div>
+                                    <div class="bg-white/40 p-4 rounded-lg border border-cream/50">
+                                        <span class="block font-serif text-forest mb-1">B-Complex</span>
+                                        <span class="text-xs font-sans text-forest/60 uppercase tracking-wider">Metabolic cofactor</span>
+                                    </div>
+                                    <div class="bg-white/40 p-4 rounded-lg border border-cream/50">
+                                        <span class="block font-serif text-forest mb-1">Vitamin C</span>
+                                        <span class="text-xs font-sans text-forest/60 uppercase tracking-wider">Antioxidant shield</span>
+                                    </div>
+                                    <div class="bg-white/40 p-4 rounded-lg border border-cream/50">
+                                        <span class="block font-serif text-forest mb-1">Glutathione</span>
+                                        <span class="text-xs font-sans text-forest/60 uppercase tracking-wider">Cellular detox</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Protocol -->
+                            <div id="tab-protocol" class="tab-content" role="tabpanel">
+                                <p class="font-sans font-light text-forest/80 leading-relaxed mb-6">Administered by our clinical staff in a calm, focused environment.</p>
+                                <div class="border-l border-medical/30 pl-6 space-y-6">
+                                    <div>
+                                        <h4 class="font-serif text-forest mb-1">Duration</h4>
+                                        <p class="font-sans text-sm text-forest/70 font-light">Available in 2-hour or 4-hour slow infusion drips to minimize flush effects.</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-serif text-forest mb-1">Frequency</h4>
+                                        <p class="font-sans text-sm text-forest/70 font-light">Loading phase: 4 sessions over 2 weeks. Maintenance: Bi-monthly.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer Area -->
+    <footer class="bg-forest text-beige py-12 border-t border-olive/30 mt-auto relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+                <div class="text-center md:text-left">
+                    <h2 class="font-serif text-2xl tracking-widest text-cream mb-4">COSMO</h2>
+                    <p class="text-sm text-beige/80 max-w-xs leading-relaxed">Premium Swedish Regenerative Medicine & Longevity Focus.</p>
+                </div>
+                <div class="flex gap-12 text-center md:text-left">
+                     <div class="flex flex-col gap-2">
+                        <a href="about.html" class="text-sm hover:text-medical border-b border-transparent hover:border-medical transition-all pb-0.5">Philosophy</a>
+                        <a href="products.html" class="text-sm hover:text-medical border-b border-transparent hover:border-medical transition-all pb-0.5">Therapies</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-olive/30 flex justify-between items-center text-xs text-beige/60">
+                <p>&copy; 2026 Cosmo Fine Art. All rights reserved.</p>
+                <p>Stockholm, Sweden</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Animations & Interaction -->
+    <script src="./src/js/animations.js"></script>
+    <script>
+        // Tab System Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active from all
+                    tabBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.classList.add('text-forest/60');
+                    });
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Add active to clicked target
+                    btn.classList.add('active');
+                    btn.classList.remove('text-forest/60');
+                    const targetId = btn.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

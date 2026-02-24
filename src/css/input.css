@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-sage text-forest font-sans antialiased overflow-x-hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-beige/80 backdrop-blur-md border border-cream/20 shadow-lg;
+  }
+
+  .medical-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(229,138,74,0.6)];
+  }
+}

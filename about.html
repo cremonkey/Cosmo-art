@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmo Fine Art | Science & Philosophy</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore the science of NAD+ therapy and the underlying philosophy of Cosmo Fine Art regenerative medicine.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (compiled) -->
+    <link rel="stylesheet" href="./dist/css/style.css">
+</head>
+<body class="bg-beige text-forest font-sans antialiased overflow-x-hidden min-h-screen flex flex-col transition-opacity duration-1000 opacity-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyIvPjwvc3ZnPg==')] bg-repeat" id="body-content">
+    
+    <!-- Navigation Area -->
+    <header class="fixed w-full z-50 transition-all duration-300 bg-sage/90 backdrop-blur-md border-b border-cream/10" id="main-nav">
+        <!-- Exact same navigation -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="font-serif text-2xl tracking-widest text-cream">COSMO<span class="text-beige/70 text-sm ml-2 font-sans tracking-widest">FINE ART</span></a>
+                </div>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-cream/80 hover:text-medical transition-colors text-sm uppercase tracking-wider">Home</a>
+                    <a href="about.html" class="text-medical transition-colors text-sm uppercase tracking-wider border-b border-medical pb-1">Science & Philosophy</a>
+                    <a href="products.html" class="text-cream/80 hover:text-medical transition-colors text-sm uppercase tracking-wider">Therapies</a>
+                    <a href="index.html#location" class="text-cream/80 hover:text-medical transition-colors text-sm uppercase tracking-wider">Location</a>
+                </nav>
+
+                <!-- Mobile Menu Toggle Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="text-cream hover:text-medical p-2 min-w-[44px] min-h-[44px] transition-colors relative z-[60]" aria-expanded="false" aria-label="Toggle navigation">
+                        <svg id="menu-icon" class="h-6 w-6 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[55] bg-forest/95 backdrop-blur-lg flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-500">
+        <nav class="flex flex-col items-center space-y-8 text-center translate-y-8 transition-transform duration-500" id="mobile-nav-links">
+            <a href="index.html" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Home</a>
+            <a href="about.html" class="mobile-link text-medical text-2xl font-serif tracking-widest border-b border-medical pb-2">Science & Philosophy</a>
+            <a href="products.html" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Therapies</a>
+            <a href="index.html#location" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Location</a>
+        </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        
+        <!-- Philosophy Manifesto (US3 Goal) -->
+        <section class="min-h-[70vh] flex items-center justify-center pt-32 pb-24 px-4 text-center mt-20">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="reveal-on-scroll font-serif text-5xl md:text-7xl lg:text-8xl text-forest tracking-wide font-light mb-8" style="transition-delay: 0.2s;">
+                    Where Science <br><span class="italic text-sage">Meets Art.</span>
+                </h1>
+                
+                <div class="reveal-on-scroll w-24 h-[1px] bg-medical/50 mx-auto mb-10" style="transition-delay: 0.4s;"></div>
+                
+                <p class="reveal-on-scroll font-sans text-forest/80 text-lg md:text-2xl font-light leading-relaxed mb-6" style="transition-delay: 0.6s;">
+                    We believe true luxury is longevity. Our approach to cellular regeneration is rooted in precise, methodical Swedish innovation, elevating restorative nutrition into an art form.
+                </p>
+            </div>
+        </section>
+
+        <!-- Swedish Innovation Split Section -->
+        <section class="py-24 bg-sage relative overflow-hidden">
+            <!-- Decorative fine line -->
+            <div class="absolute top-0 right-1/3 w-[1px] h-full bg-cream/10"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Left: Clinic Imagery Mask -->
+                    <div class="reveal-on-scroll relative aspect-[4/5] rounded-tl-[100px] rounded-br-[100px] overflow-hidden group shadow-2xl" style="transition-delay: 0.2s;">
+                        <div class="absolute inset-0 bg-forest/80 transition-transform duration-[1.5s] ease-in-out group-hover:scale-105 flex items-center justify-center">
+                            <!-- Placeholder SVG for elegant aesthetic -->
+                             <svg class="w-1/3 h-1/3 text-sage/30 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.3">
+                                 <!-- Abstract cellular shape -->
+                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+                             </svg>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-forest/80 to-transparent"></div>
+                    </div>
+
+                    <!-- Right: Text Content -->
+                    <div class="reveal-on-scroll flex flex-col justify-center" style="transition-delay: 0.4s;">
+                        <h3 class="font-sans text-medical text-xs uppercase tracking-[0.2em] mb-4">Swedish Innovation</h3>
+                        <h2 class="font-serif text-4xl md:text-5xl text-cream tracking-wide mb-8">Cellular Regeneration</h2>
+                        <div class="space-y-6">
+                            <p class="font-sans text-cream/80 font-light leading-relaxed">
+                                Our protocols are developed with a foundational understanding of the body's intrinsic healing capabilities. We utilize highly bioavailable nutrients to target mitochondrial decline.
+                            </p>
+                            <p class="font-sans text-cream/80 font-light leading-relaxed">
+                                Drawing inspiration from Swedish minimalism, our therapies deliver exactly what the cell requires to repair epigenetic damage—nothing more, nothing less.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- The Science of NAD+ -->
+        <section class="py-32 bg-forest relative border-t border-olive/30">
+            <!-- Subtle molecular line animation background -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+                <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" stroke="white" stroke-width="0.1" fill="none">
+                    <path class="animate-[draw_15s_infinite_alternate]" d="M10,90 Q30,10 50,50 T90,10" />
+                    <path class="animate-[draw_20s_infinite_alternate-reverse]" d="M10,10 Q30,90 50,50 T90,90" />
+                </svg>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-20">
+                    <h2 class="reveal-on-scroll font-serif text-4xl md:text-5xl text-cream tracking-wide mb-6">The Science of NAD+</h2>
+                    <p class="reveal-on-scroll font-sans text-cream/70 font-light max-w-2xl mx-auto">Nicotinamide Adenine Dinucleotide is the cornerstone of cellular metabolism and the ultimate currency of energy and longevity.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Infographic Block 1 -->
+                    <div class="reveal-on-scroll border border-olive/40 bg-sage/10 backdrop-blur-sm p-8 rounded-xl hover:border-medical/40 transition-colors duration-500 group" style="transition-delay: 0.1s;">
+                        <div class="w-12 h-12 rounded-full bg-sage/30 flex items-center justify-center mb-6 text-medical group-hover:scale-110 transition-transform duration-500">
+                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h4 class="font-serif text-cream text-xl mb-3">Cellular Energy</h4>
+                        <p class="font-sans text-sm text-cream/60 font-light leading-relaxed">NAD+ acts as a critical coenzyme in the mitochondria, facilitating the conversion of nutrients into ATP fuel.</p>
+                    </div>
+
+                    <!-- Infographic Block 2 -->
+                    <div class="reveal-on-scroll border border-olive/40 bg-sage/10 backdrop-blur-sm p-8 rounded-xl hover:border-medical/40 transition-colors duration-500 group" style="transition-delay: 0.3s;">
+                        <div class="w-12 h-12 rounded-full bg-sage/30 flex items-center justify-center mb-6 text-medical group-hover:scale-110 transition-transform duration-500">
+                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h4 class="font-serif text-cream text-xl mb-3">Anti-Aging Support</h4>
+                        <p class="font-sans text-sm text-cream/60 font-light leading-relaxed">Activates sirtuins, longevity proteins responsible for repairing DNA replication errors.</p>
+                    </div>
+
+                    <!-- Infographic Block 3 -->
+                    <div class="reveal-on-scroll border border-olive/40 bg-sage/10 backdrop-blur-sm p-8 rounded-xl hover:border-medical/40 transition-colors duration-500 group" style="transition-delay: 0.5s;">
+                        <div class="w-12 h-12 rounded-full bg-sage/30 flex items-center justify-center mb-6 text-medical group-hover:scale-110 transition-transform duration-500">
+                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        </div>
+                        <h4 class="font-serif text-cream text-xl mb-3">Cognitive Enhancement</h4>
+                        <p class="font-sans text-sm text-cream/60 font-light leading-relaxed">Promotes neurogenesis and protects against neurodegenerative stress, ensuring mental acuity.</p>
+                    </div>
+
+                    <!-- Infographic Block 4 -->
+                    <div class="reveal-on-scroll border border-olive/40 bg-sage/10 backdrop-blur-sm p-8 rounded-xl hover:border-medical/40 transition-colors duration-500 group" style="transition-delay: 0.7s;">
+                        <div class="w-12 h-12 rounded-full bg-sage/30 flex items-center justify-center mb-6 text-medical group-hover:scale-110 transition-transform duration-500">
+                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                        </div>
+                        <h4 class="font-serif text-cream text-xl mb-3">Skin Regeneration</h4>
+                        <p class="font-sans text-sm text-cream/60 font-light leading-relaxed">Restores structural integrity at the dermal matrix, delaying the visible signs of chronological aging.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer Area -->
+    <!-- (Reusing exact same footer structure for consistency across pages) -->
+    <footer class="bg-forest text-beige py-12 border-t border-olive/30 mt-auto relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+                <div class="text-center md:text-left">
+                    <h2 class="font-serif text-2xl tracking-widest text-cream mb-4">COSMO</h2>
+                    <p class="text-sm text-beige/80 max-w-xs leading-relaxed">Premium Swedish Regenerative Medicine & Longevity Focus.</p>
+                </div>
+                <!-- Links -->
+                <div class="flex gap-12 text-center md:text-left">
+                     <div class="flex flex-col gap-2">
+                        <a href="about.html" class="text-sm text-medical border-b border-transparent pb-0.5">Philosophy</a>
+                        <a href="products.html" class="text-sm hover:text-medical border-b border-transparent hover:border-medical transition-all pb-0.5">Therapies</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-olive/30 flex justify-between items-center text-xs text-beige/60">
+                <p>&copy; 2026 Cosmo Fine Art. All rights reserved.</p>
+                <p>Stockholm, Sweden</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Animations & Interaction -->
+    <script src="./src/js/animations.js"></script>
+    <style>
+        /* Define molecular line drawing animation */
+        @keyframes draw {
+            from { stroke-dasharray: 0 1000; stroke-dashoffset: 0; }
+            to { stroke-dasharray: 1000 0; stroke-dashoffset: 0; }
+        }
+    </style>
+</body>
+</html>
