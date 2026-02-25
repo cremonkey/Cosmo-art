@@ -12,8 +12,8 @@ module.exports = {
         forest: "#4F5C4C",
       },
       fontFamily: {
-        sans: ["Inter", "Roboto", "Outfit", "sans-serif"],
-        serif: ["Playfair Display", "Merriweather", "serif"],
+        sans: ["Engraved", "Inter", "Roboto", "sans-serif"],
+        serif: ["Engraved", "Playfair Display", "serif"],
       },
     },
   },
