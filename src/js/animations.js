@@ -39,17 +39,38 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
     
-    // 3. Simple Header minimization on scroll
+    // 3. Header scroll pill animation
     const header = document.getElementById('main-nav');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('py-2', 'shadow-md');
-            header.classList.remove('py-4');
-        } else {
-            header.classList.add('py-4');
-            header.classList.remove('py-2', 'shadow-md');
-        }
-    }, { passive: true });
+    const navContainer = document.getElementById('nav-container');
+    const navInner = document.getElementById('nav-inner');
+    
+    if (header && navContainer && navInner) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // Header gets top margin for floating effect
+                header.classList.add('pt-4');
+                header.classList.remove('pt-0');
+                
+                // Container becomes a rounded pill, smaller width, with padding
+                navContainer.classList.add('rounded-full', 'shadow-lg', 'border', 'border-cream/20', 'max-w-5xl', 'px-6', 'py-1', 'mx-auto');
+                navContainer.classList.remove('max-w-none', '-mx-4', 'sm:-mx-6', 'lg:-mx-8', 'border-b', 'border-cream/10', 'w-full');
+                
+                // Inner height adjustment slightly smaller for pill
+                navInner.classList.add('h-14');
+                navInner.classList.remove('h-20');
+            } else {
+                // Return to flat top bar
+                header.classList.add('pt-0');
+                header.classList.remove('pt-4');
+                
+                navContainer.classList.add('max-w-none', '-mx-4', 'sm:-mx-6', 'lg:-mx-8', 'border-b', 'border-cream/10', 'w-full');
+                navContainer.classList.remove('rounded-full', 'shadow-lg', 'border', 'border-cream/20', 'max-w-5xl', 'px-6', 'py-1', 'mx-auto');
+                
+                navInner.classList.add('h-20');
+                navInner.classList.remove('h-14');
+            }
+        }, { passive: true });
+    }
 
     // 4. Mobile Menu Logic
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -97,5 +118,67 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+    }
+
+    // 5. Before/After Slider Logic
+    const slider = document.getElementById('before-after-slider');
+    const clipper = document.getElementById('slider-clipper');
+    const handle = document.getElementById('slider-handle');
+
+    if (slider && clipper && handle) {
+        let isSliding = false;
+
+        const slide = (e) => {
+            if (!isSliding) return;
+            
+            // Get X coordinate of mouse or touch
+            let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            if (!clientX) return;
+
+            // Get slider dimensions
+            const rect = slider.getBoundingClientRect();
+            
+            // Calculate percentage (0 to 1)
+            let xPos = clientX - rect.left;
+            let percent = xPos / rect.width;
+
+            // Clamp between 0% and 100%
+            if (percent < 0) percent = 0;
+            if (percent > 1) percent = 1;
+
+            const percentString = (percent * 100) + '%';
+
+            // Apply to the clipper (which holds the before image)
+            clipper.style.width = percentString;
+            
+            // Apply to the handle
+            handle.style.left = percentString;
+            
+            // Add grabbing cursor
+            slider.classList.add('cursor-grabbing');
+            slider.classList.remove('cursor-ew-resize');
+        };
+
+        const stopSliding = () => {
+            isSliding = false;
+            slider.classList.remove('cursor-grabbing');
+            slider.classList.add('cursor-ew-resize');
+        };
+
+        // Mouse Events
+        slider.addEventListener('mousedown', (e) => {
+            isSliding = true;
+            slide(e);
+        });
+        window.addEventListener('mousemove', slide);
+        window.addEventListener('mouseup', stopSliding);
+
+        // Touch Events
+        slider.addEventListener('touchstart', (e) => {
+            isSliding = true;
+            slide(e);
+        }, { passive: true });
+        window.addEventListener('touchmove', slide, { passive: true });
+        window.addEventListener('touchend', stopSliding);
     }
 });
