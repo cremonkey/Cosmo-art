@@ -55,11 +55,19 @@ to      id="main-nav"
               class="text-cream/80 hover:text-medical transition-all duration-300 text-sm font-medium tracking-wide"
               >Science</a
             >
-            <a
-              href="products.html"
-              class="text-cream/80 hover:text-medical transition-all duration-300 text-sm font-medium tracking-wide"
-              >Solutions</a
-            >
+            <div class="relative group">
+              <a href="products.html" class="text-cream/80 hover:text-medical transition-all duration-300 text-sm font-medium tracking-wide flex items-center">
+                Solutions
+                <svg class="w-3 h-3 ml-1 transform group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+              <!-- Dropdown Menu -->
+              <div class="absolute left-0 mt-2 w-48 rounded-xl bg-forest/95 backdrop-blur-md border border-olive/30 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left group-hover:translate-y-0 -translate-y-2 z-50">
+                <div class="py-2">
+                  <a href="products.html?category=nutrition" class="block px-4 py-2 text-sm text-cream/80 hover:text-medical hover:bg-white/5 transition-colors">Nutrition Therapies</a>
+                  <a href="products.html?category=derma" class="block px-4 py-2 text-sm text-cream/80 hover:text-medical hover:bg-white/5 transition-colors">Derma Treatments</a>
+                </div>
+              </div>
+            </div>
             <a
               href="#location"
               class="text-cream/80 hover:text-medical transition-all duration-300 text-sm font-medium tracking-wide"
@@ -106,7 +114,18 @@ to      id="main-nav"
         <nav class="flex flex-col items-center space-y-8 text-center translate-y-8 transition-transform duration-500" id="mobile-nav-links">
             <a href="index.html" class="mobile-link text-medical text-2xl font-serif tracking-widest border-b border-medical pb-2">Home</a>
             <a href="about.html" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Science & Philosophy</a>
-            <a href="products.html" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Therapies</a>
+            <div class="flex flex-col items-center w-full group/mobile-dropdown relative">
+                <a href="products.html" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest flex items-center">
+                    Therapies
+                    <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-focus-within/mobile-dropdown:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="h-0 overflow-hidden group-focus-within/mobile-dropdown:h-auto group-focus-within/mobile-dropdown:mt-4 transition-all duration-300 w-full">
+                    <div class="flex flex-col items-center space-y-4">
+                        <a href="products.html?category=nutrition" class="text-cream/50 hover:text-medical text-lg font-serif tracking-widest transition-colors">Nutrition</a>
+                        <a href="products.html?category=derma" class="text-cream/50 hover:text-medical text-lg font-serif tracking-widest transition-colors">Derma</a>
+                    </div>
+                </div>
+            </div>
             <a href="#location" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Location</a>
         </nav>
     </div>
@@ -184,6 +203,50 @@ to      id="main-nav"
                             <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORY SHOWCASE SECTION -->
+        <section class="py-24 bg-cream/30 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal-on-scroll">
+                    <h3 class="font-sans text-forest/80 text-xs uppercase tracking-[0.2em] mb-4">Our Focus</h3>
+                    <h2 class="font-serif text-4xl md:text-5xl text-forest tracking-wide">Pioneering Solutions</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
+                    <!-- Nutrition Category Card -->
+                    <a href="products.html?category=nutrition" class="group relative aspect-[4/5] md:aspect-square overflow-hidden rounded-tl-[80px] rounded-br-[80px] shadow-xl reveal-on-scroll flex flex-col justify-end" style="transition-delay: 0.2s;">
+                        <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" alt="Nutrition Therapies">
+                        <div class="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/40 to-transparent"></div>
+                        <div class="relative z-10 p-8 md:p-12 transition-transform duration-500 transform translate-y-4 group-hover:translate-y-0">
+                            <span class="inline-block px-4 py-1 border border-cream/30 rounded-full text-cream text-xs uppercase tracking-widest mb-4">Oral & IV</span>
+                            <h3 class="font-serif text-3xl text-cream mb-4">Nutrition Therapies</h3>
+                            <p class="font-sans text-cream/80 font-light text-sm leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                Bioavailable formulations engineered to restore mitochondrial function and optimize cellular health from within.
+                            </p>
+                            <span class="inline-flex items-center text-medical text-sm uppercase tracking-wider font-semibold group-hover:underline underline-offset-4 decoration-1">
+                                Explore <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- Derma Category Card -->
+                    <a href="products.html?category=derma" class="group relative aspect-[4/5] md:aspect-square overflow-hidden rounded-tr-[80px] rounded-bl-[80px] shadow-xl reveal-on-scroll flex flex-col justify-end lg:mt-16" style="transition-delay: 0.4s;">
+                        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" alt="Derma Treatments">
+                        <div class="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/40 to-transparent"></div>
+                        <div class="relative z-10 p-8 md:p-12 transition-transform duration-500 transform translate-y-4 group-hover:translate-y-0">
+                            <span class="inline-block px-4 py-1 border border-cream/30 rounded-full text-cream text-xs uppercase tracking-widest mb-4">Topical & Mesotherapy</span>
+                            <h3 class="font-serif text-3xl text-cream mb-4">Derma Treatments</h3>
+                            <p class="font-sans text-cream/80 font-light text-sm leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                Advanced dermal matrix protocols targeting visible signs of aging through precision topical applications.
+                            </p>
+                            <span class="inline-flex items-center text-medical text-sm uppercase tracking-wider font-semibold group-hover:underline underline-offset-4 decoration-1">
+                                Explore <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>

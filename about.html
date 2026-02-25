@@ -29,7 +29,19 @@
                 <nav class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="opacity-80 hover:opacity-100 hover:text-medical transition-all duration-300 text-sm uppercase tracking-wider text-inherit">Home</a>
                     <a href="about.html" class="text-medical transition-colors text-sm uppercase tracking-wider border-b border-medical pb-1">Science & Philosophy</a>
-                    <a href="products.html" class="opacity-80 hover:opacity-100 hover:text-medical transition-all duration-300 text-sm uppercase tracking-wider text-inherit">Therapies</a>
+                    <div class="relative group">
+                        <a href="products.html" class="opacity-80 hover:opacity-100 hover:text-medical transition-all duration-300 text-sm uppercase tracking-wider text-inherit flex items-center">
+                            Therapies
+                            <svg class="w-3 h-3 ml-1 transform group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </a>
+                        <!-- Dropdown Menu -->
+                        <div class="absolute pt-4 left-0 mt-0 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="rounded-xl bg-forest/95 backdrop-blur-md border border-olive/30 shadow-xl py-2 transform origin-top-left -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                <a href="products.html?category=nutrition" class="block px-4 py-2 text-sm text-cream/80 hover:text-medical hover:bg-white/5 transition-colors">Nutrition Therapies</a>
+                                <a href="products.html?category=derma" class="block px-4 py-2 text-sm text-cream/80 hover:text-medical hover:bg-white/5 transition-colors">Derma Treatments</a>
+                            </div>
+                        </div>
+                    </div>
                     <a href="index.html#location" class="opacity-80 hover:opacity-100 hover:text-medical transition-all duration-300 text-sm uppercase tracking-wider text-inherit">Location</a>
                     <a href="products.html" id="nav-button" class="bg-forest text-cream border border-transparent hover:bg-forest/90 transition-all duration-300 rounded-full px-6 py-2 text-sm uppercase tracking-wider flex items-center group ml-4">
                         Explore Solutions
@@ -54,7 +66,18 @@
         <nav class="flex flex-col items-center space-y-8 text-center translate-y-8 transition-transform duration-500" id="mobile-nav-links">
             <a href="index.html" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Home</a>
             <a href="about.html" class="mobile-link text-medical text-2xl font-serif tracking-widest border-b border-medical pb-2">Science & Philosophy</a>
-            <a href="products.html" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Therapies</a>
+            <div class="flex flex-col items-center w-full group/mobile-dropdown relative">
+                <a href="products.html" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest flex items-center">
+                    Therapies
+                    <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-focus-within/mobile-dropdown:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="h-0 overflow-hidden group-focus-within/mobile-dropdown:h-auto group-focus-within/mobile-dropdown:mt-4 transition-all duration-300 w-full">
+                    <div class="flex flex-col items-center space-y-4">
+                        <a href="products.html?category=nutrition" class="text-cream/50 hover:text-medical text-lg font-serif tracking-widest transition-colors">Nutrition</a>
+                        <a href="products.html?category=derma" class="text-cream/50 hover:text-medical text-lg font-serif tracking-widest transition-colors">Derma</a>
+                    </div>
+                </div>
+            </div>
             <a href="index.html#location" class="mobile-link text-cream/70 hover:text-medical transition-colors text-2xl font-serif tracking-widest">Location</a>
         </nav>
     </div>

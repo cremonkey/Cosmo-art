@@ -181,4 +181,74 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('touchmove', slide, { passive: true });
         window.addEventListener('touchend', stopSliding);
     }
+
+    // 6. Product Category Filtering
+    const filterContainer = document.getElementById('product-filters');
+    const productGrid = document.getElementById('product-grid');
+    
+    // Also parse URL query parameters
+    let activeCategory = 'all';
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('category')) {
+        activeCategory = params.get('category').toLowerCase();
+    }
+
+    if (filterContainer && productGrid) {
+        const filterBtns = filterContainer.querySelectorAll('.filter-btn');
+        const products = productGrid.querySelectorAll('.product-item');
+
+        const applyFilter = (category) => {
+            // Update active button state
+            filterBtns.forEach(btn => {
+                const btnCategory = btn.getAttribute('data-filter');
+                if (btnCategory === category) {
+                    btn.classList.add('active', 'bg-forest', 'text-cream', 'shadow-md');
+                    btn.classList.remove('text-forest/70', 'hover:text-forest');
+                } else {
+                    btn.classList.remove('active', 'bg-forest', 'text-cream', 'shadow-md');
+                    btn.classList.add('text-forest/70', 'hover:text-forest');
+                }
+            });
+
+            // Filter products with a smooth transition
+            products.forEach(product => {
+                const productCategory = product.getAttribute('data-category');
+                
+                // Fade out before hiding
+                product.style.opacity = '0';
+                product.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    if (category === 'all' || productCategory === category) {
+                        product.style.display = 'flex'; // our items are flex cols
+                        
+                        // Force reflow
+                        void product.offsetWidth;
+                        
+                        // Fade in
+                        product.style.opacity = '1';
+                        product.style.transform = 'scale(1)';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                }, 300); // 300ms matches the transition duration
+            });
+        };
+
+        // Apply initial filter based on URL or default
+        applyFilter(activeCategory);
+
+        // Click Event Listeners
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.getAttribute('data-filter');
+                // Optional: update URL
+                const url = new URL(window.location);
+                url.searchParams.set('category', category);
+                window.history.pushState({}, '', url);
+
+                applyFilter(category);
+            });
+        });
+    }
 });
