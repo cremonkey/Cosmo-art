@@ -4,3 +4,11 @@ build/
 .env*
 .DS_Store
 Thumbs.db
+vendor/
+public/storage
+storage/*.key
+.agent/
+.specify/
+dist/
+specs/
+application/

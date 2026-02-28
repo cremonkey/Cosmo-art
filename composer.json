@@ -1,0 +1,16 @@
+{
+  "name": "cremonkey/cosmo-finart",
+  "type": "project",
+  "require": {
+    "php": "^8.2",
+    "laravel/framework": "^12.53"
+  },
+  "config": {
+    "platform": {
+      "php": "8.2.0"
+    },
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}
