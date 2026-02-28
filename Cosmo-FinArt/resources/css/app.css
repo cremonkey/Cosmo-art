@@ -1,0 +1,47 @@
+@import 'tailwindcss';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: 'Engraved', 'Playfair Display', serif;
+    
+    --color-medical: #E58A4A; /* rgb(229 138 74) */
+    --color-forest: #4F5C4C;  /* rgb(79 92 76) */
+    --color-sage: #6F7C6B;    /* rgb(111 124 107) */
+    --color-beige: #F5F1E9;   /* rgb(245 241 233) */
+    --color-cream: #F3EBBD;   /* rgb(243 235 189) - revised from style.css check */
+    --color-olive: #7D8B7A;
+}
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@font-face {
+  font-family: "Engraved";
+  src: url("/assets/fonts/Engraved.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  body {
+    @apply bg-sage text-forest font-sans antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-beige/80 backdrop-blur-md border border-cream/20 shadow-lg;
+  }
+
+  .medical-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(229,138,74,0.6)];
+  }
+}
