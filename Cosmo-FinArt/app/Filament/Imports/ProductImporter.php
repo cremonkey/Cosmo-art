@@ -17,7 +17,22 @@ class ProductImporter extends Importer
         return [
             ImportColumn::make('category')
                 ->requiredMapping()
-                ->relationship(resolveUsing: 'name')
+                ->relationship(resolveUsing: function (string $state) {
+                    if (is_numeric($state)) {
+                        $category = \App\Models\Category::find($state);
+                        if ($category) {
+                            return $category->id;
+                        }
+                    }
+
+                    return \App\Models\Category::firstOrCreate([
+                        'name' => $state,
+                    ], [
+                        'slug' => \Illuminate\Support\Str::slug($state),
+                        'description' => 'Auto-generated category from import',
+                        'is_active' => true,
+                    ])->id;
+                })
                 ->rules(['required']),
             ImportColumn::make('title')
                 ->requiredMapping()
@@ -32,11 +47,15 @@ class ProductImporter extends Importer
                 ->requiredMapping()
                 ->rules(['required']),
             ImportColumn::make('clinical_focus')
-                ->rules(['max:255']),
-            ImportColumn::make('benefits'),
-            ImportColumn::make('composition'),
-            ImportColumn::make('protocol_summary'),
-            ImportColumn::make('protocol_details'),
+                ->rules(['nullable', 'max:255']),
+            ImportColumn::make('benefits')
+                ->rules(['nullable', 'json']),
+            ImportColumn::make('composition')
+                ->rules(['nullable', 'json']),
+            ImportColumn::make('protocol_summary')
+                ->rules(['nullable']),
+            ImportColumn::make('protocol_details')
+                ->rules(['nullable', 'json']),
             ImportColumn::make('is_featured')
                 ->requiredMapping()
                 ->boolean()
@@ -46,13 +65,18 @@ class ProductImporter extends Importer
                 ->boolean()
                 ->rules(['required', 'boolean']),
             ImportColumn::make('featured_image')
-                ->rules(['max:255']),
-            ImportColumn::make('gallery'),
+                ->rules(['nullable', 'max:255']),
+            ImportColumn::make('gallery')
+                ->rules(['nullable', 'json']),
+            ImportColumn::make('sort_order')
+                ->numeric()
+                ->rules(['nullable', 'integer']),
         ];
     }
 
     public function resolveRecord(): Product
     {
+        // Handle duplicates based on slug
         return Product::firstOrNew([
             'slug' => $this->data['slug'],
         ]);
