@@ -8,10 +8,10 @@ use Filament\Forms;
 use Filament\Schemas\Schema;
 use Filament\Schemas\Components as SchemaComponents;
 use Filament\Resources\Resource;
+use Filament\Actions;
+use Filament\Schemas\Components\Section;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use UnitEnum;
@@ -147,30 +147,30 @@ class ProductResource extends Resource
             ->schema([
                 SchemaComponents\Section::make('General Details')
                     ->schema([
-                        Forms\Components\TextEntry::make('title')
+                        SchemaComponents\TextEntry::make('title')
                             ->extraAttributes(['class' => 'text-white font-bold']),
-                        Forms\Components\TextEntry::make('category.name')
+                        SchemaComponents\TextEntry::make('category.name')
                             ->extraAttributes(['class' => 'text-white']),
-                        Forms\Components\TextEntry::make('slug')
+                        SchemaComponents\TextEntry::make('slug')
                             ->extraAttributes(['class' => 'text-white']),
-                        Forms\Components\TextEntry::make('clinical_focus')
+                        SchemaComponents\TextEntry::make('clinical_focus')
                             ->extraAttributes(['class' => 'text-white']),
                     ])->columns(2),
 
                 SchemaComponents\Section::make('Descriptions')
                     ->schema([
-                        Forms\Components\TextEntry::make('short_description')
+                        SchemaComponents\TextEntry::make('short_description')
                             ->extraAttributes(['class' => 'text-white']),
-                        Forms\Components\TextEntry::make('description')
+                        SchemaComponents\TextEntry::make('description')
                             ->html()
                             ->extraAttributes(['class' => 'text-white']),
                     ]),
 
                 SchemaComponents\Section::make('Status')
                     ->schema([
-                        Forms\Components\IconEntry::make('is_active')
+                        SchemaComponents\IconEntry::make('is_active')
                             ->boolean(),
-                        Forms\Components\IconEntry::make('is_featured')
+                        SchemaComponents\IconEntry::make('is_featured')
                             ->boolean(),
                     ])->columns(2),
             ])
@@ -205,9 +205,14 @@ class ProductResource extends Resource
                 Tables\Filters\SelectFilter::make('category')
                     ->relationship('category', 'name'),
             ])
+            ->actions([
+                Actions\ViewAction::make(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
+            ])
             ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

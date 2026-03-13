@@ -22,7 +22,6 @@ $settings = app(\App\Settings\GlobalSettings::class);
                 $finalTitle = ($seo->name ?? 'Category') . ' | ' . $siteName;
                 $finalDescription = $seo->description ?: $finalDescription;
             } else {
-                // Fallback for other SEO objects
                 $finalTitle = $siteName;
             }
         } else {
@@ -57,7 +56,7 @@ $settings = app(\App\Settings\GlobalSettings::class);
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
   <body
-    class="bg-sage text-forest font-sans antialiased overflow-x-hidden min-h-screen flex flex-col transition-opacity duration-1000 opacity-0 relative"
+    class="bg-sage text-beige font-sans antialiased overflow-x-hidden min-h-screen flex flex-col transition-opacity duration-1000 opacity-0 relative"
     id="body-content"
   >
     <!-- GLOBAL FIXED VIDEO OVERLAY -->
@@ -73,7 +72,7 @@ $settings = app(\App\Settings\GlobalSettings::class);
       class="fixed top-0 left-0 w-full z-50 transition-all duration-300 px-4 sm:px-6 lg:px-8 pt-0"
       id="main-nav"
     >
-      <div id="nav-container" class="mx-auto max-w-none transition-all duration-500 bg-sage/90 backdrop-blur-md border-b border-cream/10 px-4 sm:px-6 lg:px-8 -mx-4 sm:-mx-6 lg:-mx-8">
+      <div id="nav-container" class="mx-auto max-w-none transition-all duration-500 bg-forest/80 backdrop-blur-md border-b border-white/10 px-4 sm:px-6 lg:px-8 -mx-4 sm:-mx-6 lg:-mx-8">
         <div class="max-w-7xl mx-auto flex justify-between items-center h-20 transition-all duration-500" id="nav-inner">
           <!-- Logo -->
           <div class="flex-shrink-0 flex items-center">
@@ -91,7 +90,7 @@ $settings = app(\App\Settings\GlobalSettings::class);
               <a href="{{ url('/products') }}" class="transition-all duration-300 text-sm font-medium tracking-wide flex items-center {{ request()->is('products*') ? 'text-medical underline underline-offset-8' : 'text-cream/80 hover:text-medical' }}">
                 Solutions <svg class="w-3 h-3 ml-1 transform group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </a>
-              <div class="absolute left-0 mt-2 w-48 rounded-xl bg-forest/95 backdrop-blur-md border border-olive/30 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left group-hover:translate-y-0 -translate-y-2 z-50">
+              <div class="absolute left-0 mt-2 w-48 rounded-xl bg-forest/95 backdrop-blur-md border border-white/10 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left group-hover:translate-y-0 -translate-y-2 z-50">
                 <div class="py-2">
                   <a href="{{ route('products.index', ['category' => 'nutrition']) }}" class="block px-4 py-2 text-sm text-cream/80 hover:text-medical hover:bg-white/5 transition-colors">Nutrition Therapies</a>
                   <a href="{{ route('products.index', ['category' => 'derma']) }}" class="block px-4 py-2 text-sm text-cream/80 hover:text-medical hover:bg-white/5 transition-colors">Derma Treatments</a>
