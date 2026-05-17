@@ -30,6 +30,7 @@ class Product extends Model implements HasMedia
         'is_active',
         'featured_image',
         'gallery',
+        'sort_order',
     ];
 
     protected function casts(): array

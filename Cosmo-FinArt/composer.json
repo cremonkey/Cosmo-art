@@ -12,6 +12,7 @@
         "filament/spatie-laravel-settings-plugin": "4.0",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
+        "maatwebsite/excel": "^3.1",
         "ralphjsmit/laravel-seo": "^1.6",
         "spatie/laravel-medialibrary": "^11.12.1",
         "spatie/laravel-settings": "^3.7",
@@ -84,6 +85,7 @@
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
+        "platform-check": false,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true

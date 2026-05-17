@@ -6,14 +6,12 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Models\Product;
 use Filament\Forms;
 use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components as SchemaComponents;
 use Filament\Resources\Resource;
+use Filament\Actions;
+use Filament\Schemas\Components\Section;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteBulkAction;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use UnitEnum;
@@ -25,7 +23,7 @@ class ProductResource extends Resource
     protected static ?string $model = Product::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-sparkles';
-    
+
     protected static string|UnitEnum|null $navigationGroup = 'Catalog';
 
     public static function form(Schema $schema): Schema
@@ -143,6 +141,45 @@ class ProductResource extends Resource
             ]);
     }
 
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->schema([
+                SchemaComponents\Section::make('General Details')
+                    ->schema([
+                        SchemaComponents\TextEntry::make('title')
+                            ->extraAttributes(['class' => 'text-white font-bold']),
+                        SchemaComponents\TextEntry::make('category.name')
+                            ->extraAttributes(['class' => 'text-white']),
+                        SchemaComponents\TextEntry::make('slug')
+                            ->extraAttributes(['class' => 'text-white']),
+                        SchemaComponents\TextEntry::make('clinical_focus')
+                            ->extraAttributes(['class' => 'text-white']),
+                    ])->columns(2),
+
+                SchemaComponents\Section::make('Descriptions')
+                    ->schema([
+                        SchemaComponents\TextEntry::make('short_description')
+                            ->extraAttributes(['class' => 'text-white']),
+                        SchemaComponents\TextEntry::make('description')
+                            ->html()
+                            ->extraAttributes(['class' => 'text-white']),
+                    ]),
+
+                SchemaComponents\Section::make('Status')
+                    ->schema([
+                        SchemaComponents\IconEntry::make('is_active')
+                            ->boolean(),
+                        SchemaComponents\IconEntry::make('is_featured')
+                            ->boolean(),
+                    ])->columns(2),
+            ])
+            ->extraAttributes([
+                'class' => 'view-product-infolist p-6 rounded-xl',
+                'style' => 'background-color: #1a1a1a; color: #ffffff;',
+            ]);
+    }
+
     public static function table(Table $table): Table
     {
         return $table
@@ -163,9 +200,20 @@ class ProductResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->reorderable('sort_order')
             ->filters([
                 Tables\Filters\SelectFilter::make('category')
                     ->relationship('category', 'name'),
+            ])
+            ->actions([
+                Actions\ViewAction::make(),
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
+                ]),
             ]);
     }
 
@@ -174,6 +222,7 @@ class ProductResource extends Resource
         return [
             'index' => Pages\ListProducts::route('/'),
             'create' => Pages\CreateProduct::route('/create'),
+            'view' => Pages\ViewProduct::route('/{record}'),
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }

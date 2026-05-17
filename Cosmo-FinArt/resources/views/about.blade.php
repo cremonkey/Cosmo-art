@@ -1,53 +1,5 @@
 <x-layout>
     <!-- Philosophy Manifesto -->
-    <section class="min-h-[70vh] flex items-center justify-center pt-32 pb-24 px-4 text-center mt-20 relative">
-        @if($about && $about?->hero_image)
-            <div class="absolute inset-0 z-[-1] opacity-20">
-                <img src="{{ Storage::url($about?->hero_image) }}" class="w-full h-full object-cover">
-            </div>
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-beige z-[-1]"></div>
-        @else
-             <!-- Space for Hero Image / Background Effect -->
-             <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyIvPjwvc3ZnPg==')] z-0 opacity-40 mix-blend-overlay"></div>
-        @endif
-
-        <div class="max-w-4xl mx-auto relative z-10">
-            <h1 class="reveal-on-scroll font-serif text-5xl md:text-7xl lg:text-8xl text-forest tracking-wide font-light mb-8" style="transition-delay: 0.2s;">
-                {!! nl2br(e($about?->hero_title ?? "Where Science \nMeets Art.")) !!}
-            </h1>
-            
-            <div class="reveal-on-scroll w-24 h-[1px] bg-medical/50 mx-auto mb-10" style="transition-delay: 0.4s;"></div>
-            
-            <p class="reveal-on-scroll font-sans text-forest/80 text-lg md:text-2xl font-light leading-relaxed mb-6" style="transition-delay: 0.6s;">
-                {{ $about?->hero_text ?? 'We believe true luxury is longevity. Our approach to cellular regeneration is rooted in precise, methodical Swedish innovation, elevating restorative nutrition into an art form.' }}
-            </p>
-        </div>
-    </section>
-
-    <!-- Swedish Innovation Split Section -->
-    <section class="py-24 bg-sage relative overflow-hidden flex-shrink-0">
-        <!-- Decorative fine line -->
-        <div class="absolute top-0 right-1/3 w-[1px] h-full bg-cream/10"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                
-                <!-- Left: Clinic Imagery Mask -->
-                <div class="reveal-on-scroll relative aspect-[4/5] rounded-tl-[100px] rounded-br-[100px] overflow-hidden group shadow-2xl" style="transition-delay: 0.2s;">
-                    <img src="{{ ($about && $about?->philosophy_image) ? Storage::url($about?->philosophy_image) : 'https://www.alo-medical.com/wp-content/uploads/2022/05/Title-Mesothearpy2.jpg' }}" alt="Luxury Clinic Interior" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] ease-in-out group-hover:scale-105">
-                    <div class="absolute inset-0 bg-forest/20 mix-blend-multiply transition-colors group-hover:bg-transparent pointer-events-none"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-forest/80 to-transparent pointer-events-none"></div>
-                </div>
-
-                <!-- Right: Text Content -->
-                <div class="reveal-on-scroll flex flex-col justify-center" style="transition-delay: 0.4s;">
-                    <h3 class="font-sans text-medical text-xs uppercase tracking-[0.2em] mb-4">{{ $about?->philosophy_subtitle ?? 'Swedish Innovation' }}</h3>
-                    <h2 class="font-serif text-4xl md:text-5xl text-cream tracking-wide mb-8">{{ $about?->philosophy_title ?? 'Cellular Regeneration' }}</h2>
-                    <div class="space-y-6">
-                        @if($about && $about?->philosophy_content)
-                            <div class="font-sans text-cream/80 font-light leading-relaxed prose prose-p:text-cream/80 max-w-none">
-                                {!! nl2br(e($about?->philosophy_content)) !!}
-                            </div>
                         @else
                             <p>
                                 Our protocols are developed with a foundational understanding of the body's intrinsic healing capabilities. We utilize highly bioavailable nutrients to target mitochondrial decline.
