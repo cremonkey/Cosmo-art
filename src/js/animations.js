@@ -1,43 +1,163 @@
 /**
  * Cosmo Fine Art - Global Animations
- * Handles soft 0.8s fade-ins and scroll reveals safely using vanilla JS without heavy libraries.
+ * Uses Framer Motion's DOM APIs for cinematic reveals, image drift, and polished interactions.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const Motion = window.Motion || {};
+    const { animate, hover, inView, press, scroll } = Motion;
+    const canUseMotion = Boolean(animate && inView);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const easeOutExpo = [0.16, 1, 0.3, 1];
+    const easeOutQuart = [0.25, 1, 0.5, 1];
+
+    const parseDelay = (element, fallback = 0) => {
+        const inlineDelay = element.style.transitionDelay || '';
+        if (!inlineDelay) return fallback;
+        return inlineDelay.endsWith('ms') ? parseFloat(inlineDelay) / 1000 : parseFloat(inlineDelay) || fallback;
+    };
+
+    const getBaseTransform = (element) => {
+        const transform = window.getComputedStyle(element).transform;
+        return transform && transform !== 'none' ? transform : '';
+    };
     
-    // 1. Initial Page Load Reveal (0.8s full body fade per requirements)
+    // 1. Initial Page Load Reveal
     const body = document.getElementById('body-content');
     if (body) {
-        // Remove Tailwind's opacity-0 added directly on the body tag to trigger CSS transition
         requestAnimationFrame(() => {
             body.classList.remove('opacity-0');
+            if (canUseMotion && !prefersReducedMotion) {
+                animate(body, { opacity: [0, 1] }, { duration: 0.9, ease: easeOutExpo });
+            }
         });
     }
 
-    // 2. Intersection Observer for Scroll Reveals
-    // Any element with 'reveal-on-scroll' will start invisible and slide up when viewed
-    const revealOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
-    };
+    // 2. Framer Motion page choreography
+    const revealElements = Array.from(document.querySelectorAll('.reveal-on-scroll'));
 
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('opacity-100', 'translate-y-0');
-                entry.target.classList.remove('opacity-0', 'translate-y-8');
-                observer.unobserve(entry.target); // Reveal only once for premium feel
-            }
+    if (canUseMotion && !prefersReducedMotion) {
+        revealElements.forEach((element) => {
+            const isHero = Boolean(element.closest('section:first-of-type'));
+            const isCard = element.matches('article, a') || element.querySelector('article, a');
+            const isImageBlock = Boolean(element.querySelector('img, video, svg')) && !element.matches('p, h1, h2, h3');
+            const startY = isHero ? 26 : isCard ? 48 : 36;
+            const startScale = isImageBlock || isCard ? 0.965 : 1;
+            const delay = parseDelay(element, 0);
+            const baseTransform = getBaseTransform(element);
+            const startTransform = `${baseTransform} translate3d(0, ${startY}px, 0) scale(${startScale})`.trim();
+            const finalTransform = baseTransform || 'translate3d(0, 0, 0) scale(1)';
+
+            element.classList.remove('opacity-0', 'translate-y-8', 'transition-all', 'duration-1000', 'ease-out');
+            element.style.opacity = '0';
+            element.style.transform = startTransform;
+            element.style.filter = isImageBlock ? 'blur(10px)' : 'blur(8px)';
+            element.style.willChange = 'transform, opacity, filter';
+
+            inView(
+                element,
+                () => {
+                    animate(
+                        element,
+                        {
+                            opacity: [0, 1],
+                            transform: [startTransform, finalTransform],
+                            filter: [element.style.filter, 'blur(0px)'],
+                        },
+                        {
+                            delay,
+                            duration: isHero ? 1.05 : 0.85,
+                            ease: easeOutExpo,
+                        },
+                    ).finished.then(() => {
+                        element.style.willChange = '';
+                    });
+                },
+                { margin: '0px 0px -12% 0px', amount: isHero ? 0.1 : 0.22 },
+            );
         });
-    }, revealOptions);
 
-    // Initialize all reveal elements
-    const revealElements = document.querySelectorAll('.reveal-on-scroll');
-    revealElements.forEach(el => {
-        // Set initial state
-        el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-1000', 'ease-out');
-        revealObserver.observe(el);
-    });
+        const sections = Array.from(document.querySelectorAll('main > section, footer'));
+        sections.forEach((section) => {
+            section.style.transformOrigin = '50% 40%';
+            inView(
+                section,
+                () => {
+                    animate(
+                        section,
+                        {
+                            opacity: [0.96, 1],
+                            transform: ['translate3d(0, 24px, 0) scale(0.995)', 'translate3d(0, 0, 0) scale(1)'],
+                        },
+                        { duration: 1, ease: easeOutQuart },
+                    );
+                },
+                { margin: '0px 0px -18% 0px', amount: 0.12 },
+            );
+        });
+
+        const heroVideo = document.querySelector('video');
+        if (heroVideo && scroll) {
+            scroll(
+                animate(
+                    heroVideo,
+                    { transform: ['scale(1.08)', 'scale(1.18)'], opacity: [0.1, 0.16] },
+                    { ease: 'linear' },
+                ),
+                { target: document.querySelector('main > section:first-of-type'), offset: ['start start', 'end start'] },
+            );
+        }
+
+        const artDirectedImages = Array.from(document.querySelectorAll('main section img, main section svg'));
+        artDirectedImages.forEach((element) => {
+            const section = element.closest('section');
+            if (!section || element.closest('#before-after-slider')) return;
+
+            scroll(
+                animate(
+                    element,
+                    {
+                        transform: ['translate3d(0, -18px, 0) scale(1.035)', 'translate3d(0, 22px, 0) scale(1.01)'],
+                    },
+                    { ease: 'linear' },
+                ),
+                { target: section, offset: ['start end', 'end start'] },
+            );
+        });
+
+        const interactiveCards = document.querySelectorAll('article, .grid a.group, #location .reveal-on-scroll.group');
+        interactiveCards.forEach((card) => {
+            hover(card, () => {
+                animate(card, { y: -8, scale: 1.012 }, { duration: 0.45, ease: easeOutQuart });
+                return () => animate(card, { y: 0, scale: 1 }, { duration: 0.5, ease: easeOutExpo });
+            });
+
+            press(card, () => {
+                animate(card, { scale: 0.992 }, { duration: 0.14, ease: easeOutQuart });
+                return () => animate(card, { scale: 1 }, { duration: 0.28, ease: easeOutExpo });
+            });
+        });
+    } else {
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px',
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-1000', 'ease-out');
+            revealObserver.observe(el);
+        });
+    }
     
     // 3. Header scroll pill animation
     const header = document.getElementById('main-nav');
