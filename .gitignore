@@ -12,3 +12,4 @@ storage/*.key
 dist/
 specs/
 application/
+.gstack/

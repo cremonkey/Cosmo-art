@@ -34,3 +34,4 @@ Always set through secret manager / secure deployment variables:
 - `AWS_SECRET_ACCESS_KEY`
 - `CURATOR_GLIDE_TOKEN`
 - `SEED_SUPER_ADMIN_PASSWORD`
+- `SEED_TONKER_ADMIN_PASSWORD`

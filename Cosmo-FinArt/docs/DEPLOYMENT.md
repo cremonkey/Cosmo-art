@@ -18,11 +18,15 @@ Set production-safe values:
 - `APP_URL=https://your-domain`
 - `SESSION_SECURE_COOKIE=true`
 - `FILESYSTEM_DISK=public` (or `s3` with full S3 configuration)
+- `SEED_TONKER_ADMIN_NAME="Tonker Admin"`
+- `SEED_TONKER_ADMIN_EMAIL=tonker@example.com`
+- `SEED_TONKER_ADMIN_PASSWORD=<secure-password>`
 
 ## 3. Database and Storage
 
 ```bash
 php artisan migrate --force
+php artisan db:seed --class=SuperAdminSeeder --force
 php artisan storage:link
 ```
 
@@ -72,6 +76,6 @@ Check:
 
 - `php artisan test` is green.
 - No debug mode in production.
-- Super admin account exists and non-admin cannot access `/admin`.
+- Super admin and Tonker admin accounts exist, and non-admin cannot access `/admin`.
 - Caches built successfully.
 - Queue worker and scheduler active.
